@@ -28,6 +28,7 @@ def getNeighbours(handle):
 		else:
 		    down = 50
     
+	neighbours = []
 
 	if up != 0:
 		for i in range(up,rank):
@@ -35,6 +36,8 @@ def getNeighbours(handle):
 			print "Going(up) to  compare with : "+str(handle2)
 			sim = compare.cosineSimilarity(handle,handle2)
 			print "		Similarity : "+str(sim)
+			l = [sim , str(handle2)]
+			neighbours.append(l)
 
 	if down != 0:
 		for i in range(rank+1,down+1):
@@ -42,6 +45,25 @@ def getNeighbours(handle):
 			print "Going(down) to  compare with : "+str(handle2)
 			sim = compare.cosineSimilarity(handle,handle2)
 			print "		Similarity : "+str(sim)
+			l = [sim , str(handle2)]
+			neighbours.append(l)
+
+	neighbours.sort(lambda x,y : cmp(x[0] , y[0]) , reverse = True)
+	#print neighbours
+
+	#Selecting top 10 neighbours
+	finalNeigh = []
+	counter = 1
+
+	for n in neighbours:
+		finalNeigh.append(n[1])
+		counter += 1
+		if counter == 11:
+			break
+
+	print finalNeigh
+
+
 
 
 if __name__ == "__main__":
