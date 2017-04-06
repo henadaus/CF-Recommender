@@ -10,8 +10,8 @@ def cosineSimilarity(handle1,handle2):
     submissions = json.loads(open("Submissions/Submission.txt",'r').read())
     #print submissions
     print "Hello"
-    sub1 = submissions[str(handle1)]
-    sub2 = submissions[str(handle2)]
+    sub1 = submissions[str(handle1)+" "]
+    sub2 = submissions[str(handle2)+" "]
 
     print "DOne"
     len1 = len(sub1)
